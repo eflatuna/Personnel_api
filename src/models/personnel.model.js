@@ -3,6 +3,7 @@
     EXPRESS - Personnel API
 ------------------------------------------------------- */
 const { mongoose } = require("../configs/dbConnection");
+const passwordEncrypt = require("../helpers/passwordEncrypt");
 /* ------------------------------------------------------- */
 
 const PersonnelSchema = new mongoose.Schema(
@@ -22,7 +23,7 @@ const PersonnelSchema = new mongoose.Schema(
 			type: String,
 			trim: true,
 			required: true,
-			set: (password) => password.Encrypt(password),
+			set: (password) => passwordEncrypt(password),
 		},
 		firstName: {
 			type: String,
