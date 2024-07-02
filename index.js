@@ -33,13 +33,15 @@ dbConnection();
 app.use(express.json());
 
 //!Filter,Search,Sort,Pagination
-require("./src/middlewares/findSearchSortPagi");
+app.use(require("./src/middlewares/findSearchSortPagi"));
 
 //*----------------------------------------- ROUTES ------------------------------------------------------- */
 
 app.all("/", (req, res) => {
 	res.send("Welcome to the Personnel API");
 });
+
+app.use("/departments", require("./src/routes/department.router"));
 
 // errorHandler:
 app.use(require("./src/middlewares/errorHandler"));
