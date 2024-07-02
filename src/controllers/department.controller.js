@@ -52,9 +52,13 @@ module.exports = {
 	},
 	personnels: async (req, res) => {
 		const Personnel = require("../models/personnel.model");
-		const data = await res.getModelList(Personnel, {
-			departmentId: req.params.id,
-		});
+		const data = await res.getModelList(
+			Personnel,
+			{
+				departmentId: req.params.id,
+			},
+			"departmentId"
+		);
 		res.status(200).send({
 			error: false,
 			detail: await res.getModelListDetails(Personnel, {

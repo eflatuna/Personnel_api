@@ -9,6 +9,7 @@ const idValidation = require("../middlewares/idValidation");
 //!url : /departments
 
 router.route("/").get(department.list).post(department.create);
+router.route("/:id/personnels").get(department.personnels);
 router
 	.route("/:id")
 	.all(idValidation)
