@@ -7,12 +7,12 @@ const Department = require("../models/department.model");
 
 module.exports = {
 	list: async (req, res) => {
-		// const departments = await res.getModelList(Department);
+		// const departments = await res.getModelList(Department)
 		const data = await res.getModelList(Department);
 		res.status(200).send({
 			error: false,
 			detail: await res.getModelListDetails(Department),
-			// departments,
+			//   departments,
 			data,
 		});
 	},
@@ -24,7 +24,7 @@ module.exports = {
 		});
 	},
 	read: async (req, res) => {
-		// const data = await Department.findById(req.params.id);
+		// const data = await Department.findById(req.params.id) //* findById arka planda findOne sorgusunu çalıştırır.
 		const data = await Department.findOne({ _id: req.params.id });
 		res.status(200).send({
 			error: false,
@@ -35,7 +35,9 @@ module.exports = {
 		const data = await Department.updateOne(
 			{ _id: req.params.id },
 			req.body,
-			{ runValidators: true }
+			{
+				runValidators: true, //* modelde var olan validate fonksiyonlarının(built-in ve custom) update işlemi sırasında çalışmasını sağlayan özellik ***
+			}
 		);
 		res.status(202).send({
 			error: false,
@@ -45,6 +47,7 @@ module.exports = {
 	},
 	delete: async (req, res) => {
 		const data = await Department.deleteOne({ _id: req.params.id });
+
 		res.status(data.deletedCount > 0 ? 204 : 404).send({
 			error: !data.deletedCount,
 			data,
@@ -52,6 +55,7 @@ module.exports = {
 	},
 	personnels: async (req, res) => {
 		const Personnel = require("../models/personnel.model");
+
 		const data = await res.getModelList(
 			Personnel,
 			{
@@ -59,6 +63,7 @@ module.exports = {
 			},
 			"departmentId"
 		);
+
 		res.status(200).send({
 			error: false,
 			detail: await res.getModelListDetails(Personnel, {

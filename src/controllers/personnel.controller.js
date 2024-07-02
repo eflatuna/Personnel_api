@@ -7,7 +7,7 @@ const Personnel = require("../models/personnel.model");
 
 module.exports = {
 	list: async (req, res) => {
-		const data = await res.getModelList(Personnel);
+		const data = await res.getModelList(Personnel, {}, "departmentId");
 		res.status(200).send({
 			error: false,
 			detail: await res.getModelListDetails(Personnel),
@@ -16,21 +16,27 @@ module.exports = {
 	},
 	create: async (req, res) => {
 		const isLead = req.body?.isLead || false;
+		let message = "Yeni personel eklendi.";
 		if (isLead) {
-			await Personnel.updateMany(
+			const isUpdated = await Personnel.updateMany(
 				{
 					departmentId: req.body.departmentId,
 					isLead: true,
 				},
 				{ isLead: false }
 			);
-		}
+			console.log(isUpdated);
+			if (isUpdated.modifiedCount) {
+				message = "Önceki leadler kaldırıldı.Yeni personel eklendi.";
+			}
+		} //* Her takımın tek bir lideri olmak zorunda
 
 		const data = await Personnel.create(req.body);
 
 		res.status(201).send({
 			error: false,
 			data,
+			message,
 		});
 	},
 	read: async (req, res) => {
@@ -59,7 +65,7 @@ module.exports = {
 			{ _id: req.params.id },
 			req.body,
 			{
-				runValidators: true, //* modelde var olan validate fonksiyonlarının(built-in ve custom) update işlemi sırasında çalışmasını sağlayan özellik ***
+				runValidators: true, //* modelde var olan validate fonksiyonlarının(built-in ve custom) update işlemi sırasında çalışmasını sağlayan özellik *** default off(false)
 			}
 		);
 		res.status(202).send({
