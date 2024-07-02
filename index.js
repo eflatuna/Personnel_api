@@ -42,6 +42,7 @@ app.all("/", (req, res) => {
 });
 
 app.use("/departments", require("./src/routes/department.router"));
+app.use("/personnels", require("./src/routes/personnel.router"));
 
 // errorHandler:
 app.use(require("./src/middlewares/errorHandler"));

@@ -5,7 +5,7 @@
 const router = require("express").Router();
 /* ------------------------------------------------------- */
 
-const personnel = require("../controllers/personal.controller");
+const personnel = require("../controllers/personnel.controller");
 const idValidation = require("../middlewares/idValidation");
 
 //*url : /personnels
@@ -17,6 +17,7 @@ router
 	.all(idValidation)
 	.get(personnel.read)
 	.put(personnel.update)
+	.patch(personnel.update)
 	.delete(personnel.delete);
 
 /* ------------------------------------------------------- */
