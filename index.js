@@ -20,18 +20,26 @@ const PORT = process.env.PORT || 8000;
 
 //asyncErrors to errorHandler
 require("express-async-errors");
-//*****************************************CONFIGURATIONS****************************************** */
+
+//*------------------------------------- CONFIGURATIONS ---------------------------------------------*/
+
 //!database connection
 const { dbConnection } = require("./src/configs/dbConnection");
 dbConnection();
 
-// ******************************************MIDDLEWARES******************************************* */
+//*--------------------------------------- MIDDLEWARES ---------------------------------------------------*/
 
 //!accept json-RestAPI!
-
 app.use(express.json());
 
-/* ------------------------------------------------------- */
+//!Filter,Search,Sort,Pagination
+require("./src/middlewares/findSearchSortPagi");
+
+//*----------------------------------------- ROUTES ------------------------------------------------------- */
+
+app.all("/", (req, res) => {
+	res.send("Welcome to the Personnel API");
+});
 
 // errorHandler:
 app.use(require("./src/middlewares/errorHandler"));
