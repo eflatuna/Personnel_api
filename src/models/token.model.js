@@ -1,12 +1,15 @@
+"use Strict";
+
 const { mongoose } = require("../configs/dbConnection");
 
 const TokenSchema = new mongoose.Schema(
 	{
 		userId: {
-			type: mongoose.Schema.type.ObjectId,
+			type: mongoose.Schema.Types.ObjectId,
 			ref: "Personnel",
 			required: true,
 			index: true,
+			unique: true,
 		},
 		token: {
 			type: String,

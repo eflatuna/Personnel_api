@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-const token = require("../controllers/department.controller");
+const token = require("../controllers/token.controller");
 
 const idValidation = require("../middlewares/idValidation");
 

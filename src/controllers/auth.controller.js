@@ -1,5 +1,6 @@
 "use strict";
 const Personnel = require("../models/personnel.model");
+const Token = require("../models/token.model");
 const passwordEncrypt = require("../helpers/passwordEncrypt");
 
 module.exports = {
@@ -16,7 +17,7 @@ module.exports = {
 					const tokenKey = passwordEncrypt(user._id + Date.now());
 
 					tokenData = await Token.create({
-						userId: user_id,
+						userId: user._id,
 						token: tokenKey,
 					});
 				}
