@@ -35,10 +35,17 @@ app.use(express.json());
 //!Filter,Search,Sort,Pagination
 app.use(require("./src/middlewares/findSearchSortPagi"));
 
+//!Authentication
+app.use(require("./src/middlewares/authentication"));
+
 //*----------------------------------------- ROUTES ------------------------------------------------------- */
 
 app.all("/", (req, res) => {
-	res.send("Welcome to the Personnel API");
+	// res.send("Welcome to the Personnel API");
+	res.send({
+		message: "Welcome to the Personnel API",
+		user: req.user,
+	});
 });
 // console.log("6683bd25e560c6a181877cc2" + Date.now());
 
