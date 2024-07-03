@@ -40,6 +40,7 @@ app.use(require("./src/middlewares/findSearchSortPagi"));
 app.all("/", (req, res) => {
 	res.send("Welcome to the Personnel API");
 });
+// console.log("6683bd25e560c6a181877cc2" + Date.now());
 
 // app.use("/departments", require("./src/routes/department.router"));
 // app.use("/personnels", require("./src/routes/personnel.router"));
