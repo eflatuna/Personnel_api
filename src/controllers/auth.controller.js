@@ -20,7 +20,18 @@ module.exports = {
 						token: tokenKey,
 					});
 				}
+				res.status(200).send({
+					error: false,
+					token: tokenData.token,
+					user,
+				});
+			} else {
+				res.errorStatusCode = 401;
+				throw new Error("Wrong Username or Password.");
 			}
+		} else {
+			res.errorStatusCode = 401;
+			throw new Error("username or password is required!");
 		}
 	},
 	logout: (req, res) => {},
