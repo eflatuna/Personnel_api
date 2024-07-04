@@ -4,18 +4,27 @@
 ------------------------------------------------------- */
 const router = require("express").Router();
 /* ------------------------------------------------------- */
+
 const department = require("../controllers/department.controller");
 const idValidation = require("../middlewares/idValidation");
-//!url : /departments
+const permission = require("../middlewares/permissions");
 
-router.route("/").get(department.list).post(department.create);
-router.route("/:id/personnels").get(department.personnels);
+//* URL : /departments
+
+router
+	.route("/")
+	.get(permission.isLogin, department.list)
+	.post(permission.isAdmin, department.create);
+
+router.route("/:id/personnels").get(department.personnels); //* departmana göre personel listeleme
+
 router
 	.route("/:id")
 	.all(idValidation)
-	.get(department.read)
-	.put(department.update)
-	.delete(department.delete);
+	.get(permission.isLogin, department.read)
+	.put(permission.isAdmin, department.update)
+	.patch(permission.isAdmin, department.update)
+	.delete(permission.isAdmin, department.delete);
 
 /* ------------------------------------------------------- */
 module.exports = router;
