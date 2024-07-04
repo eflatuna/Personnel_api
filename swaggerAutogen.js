@@ -35,7 +35,7 @@ const document = {
 	// },
 	info: {
 		version: packageJson.version,
-		title: packageJson.title,
+		title: packageJson.name,
 		description: packageJson.description,
 		termsOfService: "http://www.clarusway.com",
 		contact: { name: packageJson.author, email: "anthony@clarusway.com" },
