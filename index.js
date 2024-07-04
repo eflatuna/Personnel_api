@@ -76,6 +76,22 @@ const morgan = require("morgan");
 // $ npm i swagger-autogen
 // $ npm i swagger-ui-express
 // $ npm i redoc-express
+app.use("/documents/json", (req, res) => {
+	res.sendFile("swagger.json", { root: "." });
+});
+
+//!Swagger
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./swagger.json");
+
+app.use(
+	"/documents/swagger",
+	swaggerUi.setup(swaggerDocument, {
+		swaggerOptions: {
+			persistAuthorization: true,
+		},
+	})
+);
 /* -------------------------------------------------------------------------- */
 /*                                 MiddleWares                                */
 /* -------------------------------------------------------------------------- */
