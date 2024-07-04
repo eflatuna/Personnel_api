@@ -42,16 +42,16 @@ module.exports = {
 		}
 	},
 	logout: async (req, res) => {
-		// 1.yöntem (Kısa yöntem)
+		//1.Yöntem-Kisa Yöntem:userId unique olunca
 		// console.log(req.user);
-		// const deleted = await Token.deleteOne({ userId: req.user._id }); //* userId unique olduğu için bu yöntem kullanılabilir
+		// const deleted = await Token.deleteOne({ userId: req.user_id });
 
-		// 2.yöntem => her cihazdan çıkış yapmasını sağlama (çoklu cihaz)
+		//1.Yöntem-Kisa Yöntem :Her cihazdan cikis yapmasi saglanir
 		// console.log(req.user);
-		// const deleted = await Token.deleteMany({ userId: req.user._id });
+		// const deleted = await Token.deletemANY({ userId: req.user_id });
 
-		// 2.yöntem: birden fazla token bilgisi olursa sadece gelen token bilgisinin silinmesini sağlama (çoklu cihaz)
-		//! bizim senaryomuzda userId ve token unique olduğu için bu yöntemde kullanılabilir
+		//2.Yöntem-Birden fazla token bilgisi olursa
+		//!bizim senaryomuzda userId ve token unique dir
 		const auth = req.headers?.authorization || null;
 		const tokenKey = auth ? auth.split(" ") : null;
 
@@ -62,8 +62,9 @@ module.exports = {
 
 		res.status(deleted.deletedCount > 0 ? 200 : 400).send({
 			error: !deleted.deletedCount,
-			deleted,
-			message: deleted.deletedCount > 0 ? "Logout Ok" : "Logout Failed",
+			data,
+			message:
+				deleted.deletedCount > 0 ? "Logout Success" : "Logout Failed",
 		});
 	},
 };
