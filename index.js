@@ -27,12 +27,31 @@ require("express-async-errors");
 const { dbConnection } = require("./src/configs/dbConnection");
 dbConnection();
 
-//!Morgan Logging
+/* ------------------------------------------------------- */
+//* MORGAN LOGGING
+// https://expressjs.com/en/resources/middleware/morgan.html
+// https://github.com/expressjs/morgan
+//? npm i morgan
 
 const morgan = require("morgan");
 
-app.use(morgan("tiny"));
+// app.use(morgan("combined"))
+// app.use(morgan("common"))
+// app.use(morgan("dev"))
+// app.use(morgan("short"))
+// app.use(morgan("tiny"))
+// app.use(
+// 	morgan(
+// 		'IP=:remote-addr - :remote-user | TIME=[:date[clf]] | "METHOD=:method | URL=:url | HTTP/:http-version" | STATUS=:status | LENGTH=:res[content-length] |  REF=":referrer" | AGENT=":user-agent"'
+// 	)
+// );
+//! write logs to a file
+// create a write stream (in append mode)
+const fs = require("node:fs"); //* dosya işlemleri için built-in module
+var accessLogStream = fs.createWriteStream("./access.log", { flags: "a+" });
 
+// setup the logger
+app.use(morgan("combined", { stream: accessLogStream }));
 /* -------------------------------------------------------------------------- */
 /*                                 MiddleWares                                */
 /* -------------------------------------------------------------------------- */
