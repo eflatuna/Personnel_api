@@ -45,13 +45,30 @@ const morgan = require("morgan");
 // 		'IP=:remote-addr - :remote-user | TIME=[:date[clf]] | "METHOD=:method | URL=:url | HTTP/:http-version" | STATUS=:status | LENGTH=:res[content-length] |  REF=":referrer" | AGENT=":user-agent"'
 // 	)
 // );
-//! write logs to a file
-// create a write stream (in append mode)
-const fs = require("node:fs"); //* dosya işlemleri için built-in module
-var accessLogStream = fs.createWriteStream("./access.log", { flags: "a+" });
 
-// setup the logger
-app.use(morgan("combined", { stream: accessLogStream }));
+// //! write logs to a file
+// // create a write stream (in append mode)
+// const fs = require("node:fs"); //* dosya işlemleri için built-in module
+// // var accessLogStream = fs.createWriteStream("./access.log", { flags: 'a+' })
+
+// // setup the logger
+// // app.use(morgan('combined', { stream: accessLogStream }))
+// app.use(
+// 	morgan("combined", {
+// 		stream: fs.createWriteStream("./access.log", { flags: "a+" }),
+// 	})
+// );
+//! write logs to a file day by day
+// const fs = require("node:fs");
+
+// const now = new Date().toISOString().split("T")[0]
+// console.log(typeof now, now)
+
+// app.use(
+//   morgan("combined", {
+//     stream: fs.createWriteStream(`./logs/${now}.log`, { flags: "a+" }),
+//   })
+// );
 /* -------------------------------------------------------------------------- */
 /*                                 MiddleWares                                */
 /* -------------------------------------------------------------------------- */
