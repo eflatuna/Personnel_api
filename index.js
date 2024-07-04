@@ -27,6 +27,12 @@ require("express-async-errors");
 const { dbConnection } = require("./src/configs/dbConnection");
 dbConnection();
 
+//!Morgan Logging
+
+const morgan = require("morgan");
+
+app.use(morgan("tiny"));
+
 /* -------------------------------------------------------------------------- */
 /*                                 MiddleWares                                */
 /* -------------------------------------------------------------------------- */
