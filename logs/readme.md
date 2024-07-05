@@ -1,0 +1,1 @@
+Logs klasörü ve dosyaları githuba gönderilmez. 

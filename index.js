@@ -59,16 +59,16 @@ const morgan = require("morgan");
 // 	})
 // );
 //! write logs to a file day by day
-// const fs = require("node:fs");
+const fs = require("node:fs");
 
-// const now = new Date().toISOString().split("T")[0]
-// console.log(typeof now, now)
+const now = new Date().toISOString().split("T")[0];
+console.log(typeof now, now);
 
-// app.use(
-//   morgan("combined", {
-//     stream: fs.createWriteStream(`./logs/${now}.log`, { flags: "a+" }),
-//   })
-// );
+app.use(
+	morgan("combined", {
+		stream: fs.createWriteStream(`./logs/${now}.log`, { flags: "a+" }),
+	})
+);
 /* -------------------------------------------------------------------------- */
 /*                                 Documentation                               */
 /* -------------------------------------------------------------------------- */
@@ -98,6 +98,8 @@ app.use(
 
 //* accept json
 app.use(express.json());
+
+app.use(require("./src/middlewares/logging"));
 
 //*Filter,Search,Sort,Pagination(res.getModelList)
 app.use(require("./src/middlewares/findSearchSortPagi"));
