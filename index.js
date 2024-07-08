@@ -86,6 +86,7 @@ const swaggerDocument = require("./swagger.json");
 
 app.use(
 	"/documents/swagger",
+	swaggerUi.serve,
 	swaggerUi.setup(swaggerDocument, {
 		swaggerOptions: {
 			persistAuthorization: true,
