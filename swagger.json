@@ -3,7 +3,7 @@
   "info": {
     "version": "1.0.0",
     "title": "personnelapi",
-    "description": "Personal Management",
+    "description": "Personnel Management API Service",
     "termsOfService": "http://www.clarusway.com",
     "contact": {
       "name": "",
@@ -69,7 +69,27 @@
         }
       },
       "post": {
+        "tags": [
+          "Departments"
+        ],
+        "summary": "Create Department",
         "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Test Department"
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "201": {
             "description": "Created"
@@ -79,6 +99,10 @@
     },
     "/departments/{id}/personnels": {
       "get": {
+        "tags": [
+          "Departments"
+        ],
+        "summary": "Personnels of Department",
         "description": "",
         "parameters": [
           {
@@ -97,6 +121,10 @@
     },
     "/departments/{id}": {
       "get": {
+        "tags": [
+          "Departments"
+        ],
+        "summary": "Get Single Department",
         "description": "",
         "parameters": [
           {
@@ -113,6 +141,10 @@
         }
       },
       "put": {
+        "tags": [
+          "Departments"
+        ],
+        "summary": "Update Department",
         "description": "",
         "parameters": [
           {
@@ -120,6 +152,20 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Test Department"
+                }
+              }
+            }
           }
         ],
         "responses": {
@@ -129,6 +175,10 @@
         }
       },
       "delete": {
+        "tags": [
+          "Departments"
+        ],
+        "summary": "Delete Department",
         "description": "",
         "parameters": [
           {
@@ -148,6 +198,10 @@
         }
       },
       "patch": {
+        "tags": [
+          "Departments"
+        ],
+        "summary": "Update Department",
         "description": "",
         "parameters": [
           {
@@ -155,6 +209,20 @@
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "example": "Test Department"
+                }
+              }
+            }
           }
         ],
         "responses": {
