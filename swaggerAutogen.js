@@ -42,7 +42,7 @@ const document = {
 		license: { name: packageJson.license },
 	},
 	// host: `${HOST}:${PORT}`,
-	host: `https://personnel-api-nuwb.onrender.com/`,
+	host: `personnel-api-nuwb.onrender.com/`,
 	basePath: "/",
 	schemes: ["http", "https"],
 	// SimpleToken Settings:
