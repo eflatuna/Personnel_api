@@ -80,29 +80,29 @@ app.use("/documents/json", (req, res) => {
 	res.sendFile("swagger.json", { root: "." });
 });
 
-//!Swagger
-const swaggerUi = require("swagger-ui-express");
-const swaggerDocument = require("./swagger.json");
+// //!Swagger
+// const swaggerUi = require("swagger-ui-express");
+// const swaggerDocument = require("./swagger.json");
 
-app.use(
-	"/documents/swagger",
-	swaggerUi.serve,
-	swaggerUi.setup(swaggerDocument, {
-		swaggerOptions: {
-			persistAuthorization: true,
-		},
-	})
-);
+// app.use(
+// 	"/documents/swagger",
+// 	swaggerUi.serve,
+// 	swaggerUi.setup(swaggerDocument, {
+// 		swaggerOptions: {
+// 			persistAuthorization: true,
+// 		},
+// 	})
+// );
 
-//? REDOC
-const redoc = require("redoc-express");
-app.use(
-	"/documents/redoc",
-	redoc({
-		title: "Personnel Api",
-		specUrl: "/documents/json",
-	})
-);
+// //? REDOC
+// const redoc = require("redoc-express");
+// app.use(
+// 	"/documents/redoc",
+// 	redoc({
+// 		title: "Personnel Api",
+// 		specUrl: "/documents/json",
+// 	})
+// );
 
 /* -------------------------------------------------------------------------- */
 /*                                 MiddleWares                                */
