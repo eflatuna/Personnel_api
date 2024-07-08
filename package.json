@@ -1,7 +1,7 @@
 {
 	"name": "personnelapi",
 	"version": "1.0.0",
-	"description": "Personal Management",
+	"description": "Personnel Management API Service",
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
