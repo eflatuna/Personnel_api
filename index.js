@@ -107,7 +107,7 @@ dbConnection();
 //* accept json
 app.use(express.json());
 
-app.use(require("./src/middlewares/logging"));
+// app.use(require("./src/middlewares/logging"));
 
 //*Filter,Search,Sort,Pagination(res.getModelList)
 app.use(require("./src/middlewares/findSearchSortPagi"));
