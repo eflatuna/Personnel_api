@@ -76,9 +76,11 @@ app.use(
 // $ npm i swagger-autogen
 // $ npm i swagger-ui-express
 // $ npm i redoc-express
-app.use("/documents/json", (req, res) => {
-	res.sendFile("swagger.json", { root: "." });
-});
+//*JSON
+
+// app.use("/documents/json", (req, res) => {
+// 	res.sendFile("swagger.json", { root: "." });
+// });
 
 // //!Swagger
 // const swaggerUi = require("swagger-ui-express");
