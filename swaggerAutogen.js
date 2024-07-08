@@ -41,7 +41,8 @@ const document = {
 		contact: { name: packageJson.author, email: "anthony@clarusway.com" },
 		license: { name: packageJson.license },
 	},
-	host: `${HOST}:${PORT}`,
+	// host: `${HOST}:${PORT}`,
+	host: `https://personnel-api-nuwb.onrender.com/`,
 	basePath: "/",
 	schemes: ["http", "https"],
 	// SimpleToken Settings:

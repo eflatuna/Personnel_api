@@ -13,7 +13,7 @@
       "name": "ISC"
     }
   },
-  "host": "127.0.0.1:8000",
+  "host": "https://personnel-api-nuwb.onrender.com/",
   "basePath": "/",
   "schemes": [
     "http",
