@@ -33,78 +33,72 @@ dbConnection();
 // https://github.com/expressjs/morgan
 //? npm i morgan
 
-const morgan = require("morgan");
+// const morgan = require("morgan");
 
 // app.use(morgan("combined"))
 // app.use(morgan("common"))
 // app.use(morgan("dev"))
 // app.use(morgan("short"))
 // app.use(morgan("tiny"))
-// app.use(
-// 	morgan(
-// 		'IP=:remote-addr - :remote-user | TIME=[:date[clf]] | "METHOD=:method | URL=:url | HTTP/:http-version" | STATUS=:status | LENGTH=:res[content-length] |  REF=":referrer" | AGENT=":user-agent"'
-// 	)
-// );
+// app.use(morgan('IP=:remote-addr - :remote-user | TIME=[:date[clf]] | "METHOD=:method | URL=:url | HTTP/:http-version" | STATUS=:status | LENGTH=:res[content-length] |  REF=":referrer" | AGENT=":user-agent"'))
 
-// //! write logs to a file
-// // create a write stream (in append mode)
-// const fs = require("node:fs"); //* dosya işlemleri için built-in module
-// // var accessLogStream = fs.createWriteStream("./access.log", { flags: 'a+' })
+//! write logs to a file
+// create a write stream (in append mode)
+// const fs = require("node:fs") //* dosya işlemleri için built-in module
+// var accessLogStream = fs.createWriteStream("./access.log", { flags: 'a+' })
 
-// // setup the logger
-// // app.use(morgan('combined', { stream: accessLogStream }))
+// setup the logger
+// app.use(morgan('combined', { stream: accessLogStream }))
 // app.use(
-// 	morgan("combined", {
-// 		stream: fs.createWriteStream("./access.log", { flags: "a+" }),
-// 	})
+//   morgan("combined", {
+//     stream: fs.createWriteStream("./access.log", { flags: "a+" }),
+//   })
 // );
 //! write logs to a file day by day
-const fs = require("node:fs");
+// const fs = require("node:fs");
 
-const now = new Date().toISOString().split("T")[0];
-console.log(typeof now, now);
+// const now = new Date().toISOString().split("T")[0]
+// console.log(typeof now, now)
 
-app.use(
-	morgan("combined", {
-		stream: fs.createWriteStream(`./logs/${now}.log`, { flags: "a+" }),
-	})
-);
+// app.use(
+//   morgan("combined", {
+//     stream: fs.createWriteStream(`./logs/${now}.log`, { flags: "a+" }),
+//   })
+// );
+
 /* -------------------------------------------------------------------------- */
-/*                                 Documentation                               */
+/*                                Documentation                               */
 /* -------------------------------------------------------------------------- */
 // https://swagger-autogen.github.io/docs/
 // $ npm i swagger-autogen
 // $ npm i swagger-ui-express
 // $ npm i redoc-express
-//*JSON
 
+//* JSON
 // app.use("/documents/json", (req, res) => {
-// 	res.sendFile("swagger.json", { root: "." });
+//   res.sendFile("swagger.json", { root: "." });
 // });
 
-// //!Swagger
+//! SWAGGER
 // const swaggerUi = require("swagger-ui-express");
 // const swaggerDocument = require("./swagger.json");
 
 // app.use(
-// 	"/documents/swagger",
-// 	swaggerUi.serve,
-// 	swaggerUi.setup(swaggerDocument, {
-// 		swaggerOptions: {
-// 			persistAuthorization: true,
-// 		},
-// 	})
+//   "/documents/swagger",
+//   swaggerUi.serve,
+//   swaggerUi.setup(swaggerDocument, {
+//     swaggerOptions: {
+//       persistAuthorization: true,
+//     },
+//   })
 // );
 
-// //? REDOC
+//? REDOC
 // const redoc = require("redoc-express");
-// app.use(
-// 	"/documents/redoc",
-// 	redoc({
-// 		title: "Personnel Api",
-// 		specUrl: "/documents/json",
-// 	})
-// );
+// app.use("/documents/redoc", redoc({
+//   title: "Personnel Api",
+//   specUrl: '/documents/json'
+// }))
 
 /* -------------------------------------------------------------------------- */
 /*                                 MiddleWares                                */
@@ -124,11 +118,25 @@ app.use(require("./src/middlewares/authentication"));
 /*                                   Routes                                   */
 /* -------------------------------------------------------------------------- */
 
+// app.all("/", (req, res) => {
+//   // res.send("Welcome to the Personnel API")
+//   res.send({
+//     message: "Welcome to the Personnel API",
+//     user: req.user,
+//   });
+// });
 app.all("/", (req, res) => {
 	// res.send("Welcome to the Personnel API")
 	res.send({
 		message: "Welcome to the Personnel API",
 		user: req.user,
+		api: {
+			documents: {
+				swagger: "/documents/swagger",
+				redoc: "/documents/redoc",
+				json: "/documents/json",
+			},
+		},
 	});
 });
 // console.log("6682f675c85e532d286f602e"+Date.now())
