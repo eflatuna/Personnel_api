@@ -42,7 +42,7 @@ const document = {
 		license: { name: packageJson.license },
 	},
 	// host: `${HOST}:${PORT}`,
-	host: `https://personnel-api-nine.vercel.app/`,
+	host: `personnel-api-nine.vercel.app/`,
 	basePath: "/",
 	schemes: ["http", "https"],
 	// SimpleToken Settings:

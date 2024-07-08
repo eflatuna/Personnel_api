@@ -13,7 +13,7 @@
       "name": "ISC"
     }
   },
-  "host": "https://personnel-api-nine.vercel.app/",
+  "host": "personnel-api-nine.vercel.app/",
   "basePath": "/",
   "schemes": [
     "http",
