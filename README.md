@@ -30,7 +30,7 @@
             personnel.router.js
 ```
 
-## Projenin isterleri
+## Project requirements
 
 -   [x] Deparment ve Personnel tablolarımız olacak bunları birbirlerine bağlayacağız. .her deparmentın altında kendisine ait personel olacak.
 -   [x] Her departmenda sadece 1 tane Lead olacak.
