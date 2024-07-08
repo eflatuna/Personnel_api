@@ -13,7 +13,7 @@
       "name": "ISC"
     }
   },
-  "host": "personnel-api-nuwb.onrender.com/",
+  "host": "https://personnel-api-nine.vercel.app/",
   "basePath": "/",
   "schemes": [
     "http",
