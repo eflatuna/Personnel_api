@@ -17,15 +17,21 @@ const router = require("express").Router();
 const swaggerUi = require("swagger-ui-express");
 const redoc = require("redoc-express");
 
+const options = {
+	customCssUrl:
+		"https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui.css",
+	swaggerOptions: { persistAuthorization: true },
+	customJs: [
+		"https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui-bundle.js",
+		"https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui-standalone-preset.js",
+	],
+}; //* vercel swagger sürümden kaynaklı doğrudan çekemiyor. O nedenle cdn linklerini bağladık.
+
 //*swagger
 router.use(
 	"/swagger",
 	swaggerUi.serve,
-	swaggerUi.setup(require("../../swagger.json"), {
-		swaggerOptions: {
-			persistAuthorization: true,
-		},
-	})
+	swaggerUi.setup(require("../../swagger.json"), options)
 );
 //* URL => /documents
 //* JSON
