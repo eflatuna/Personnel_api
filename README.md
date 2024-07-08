@@ -32,12 +32,12 @@
 
 ## Project requirements
 
--   [x] Deparment ve Personnel tablolarımız olacak bunları birbirlerine bağlayacağız. .her deparmentın altında kendisine ait personel olacak.
--   [x] Her departmenda sadece 1 tane Lead olacak.
--   [ ] Admin veya Lead; dinamik url ile url de gelen isteğe göre response değişecek.Yani departmenlara ait personeli listelemek istediğimizde bunu tek bir url üzerinden yapacağız. departments/id/personnels
--   [x] Admin yeni personel için CRUD işlemleri yapabilecek.(admin dan kasıt yetkili olan bunu farklı isim de diyebilirsiniz.)
--   [x] Personel sadece kendi bilgilerini okuyabilir , güncelleyebilir ama silme yetkisi Adminde olacak.
--   [x] Personeli silme yetkisi sadece admin olacak.
-        active olmayan personel sisteme giriş yapamaz.
--   [x] Departmentları login olan herkes okuyabilir, listeyelebilir ama Cud işlemlerini sadece admin yapacak.
--   [x] Token authentication kullanacağız. Kullanıcı logout olduğunda tokeni sileceğiz. Token işlemlerini sadece admin yapacak.
+-   [x] We will have Department and Personnel tables, and we will link them together. Each department will have its own personnel.
+-   [x] Each department will have only one Lead.
+-   [x] Admin or Lead; the response will change dynamically based on the request coming in the URL. In other words, when we want to list the personnel of departments, we will do it through a single URL: departments/id/personnels
+-   [x] Admin can perform CRUD operations for new personnel (Admin means authorized personnel; you can refer to it with a different name).
+-   [x] Personnel can only read and update their own information but will not have the authority to delete; only the Admin will have this authority.
+-   [x] Only Admin has the authority to delete personnel.
+        Inactive personnel cannot log into the system.
+-   [x]Logged-in users can read and list departments, but only the admin can perform CRUD operations..
+-   [x] We will use token authentication. When a user logs out, we will delete the token. Only the admin will handle token operations.
